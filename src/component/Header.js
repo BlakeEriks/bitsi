@@ -1,10 +1,14 @@
-import { HeaderContainer } from "../styles/Header"
+import { HeaderContainer, HeaderTitle, HeaderUsername } from "../styles/Header"
 
 const Header = () => {
     return (
         <HeaderContainer>
-            <h1>LOGO</h1>
-            <h3>username</h3>
+            <HeaderTitle>
+                JAB
+            </HeaderTitle>
+            <HeaderUsername>
+                username
+            </HeaderUsername>
         </HeaderContainer>
     )
 }
