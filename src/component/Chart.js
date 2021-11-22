@@ -37,7 +37,7 @@ const Chart = () => {
         },
         '1M' : {
             axisBottom: {
-                tickValues: 'every 5 days',
+                tickValues: 'every 6 days',
                 format: tick => moment(tick).format('MMM D')
             }
         },
@@ -50,15 +50,19 @@ const Chart = () => {
         '1D' : {
             axisBottom: {
                 tickValues: 'every 4 hours',
-                format: tick => moment(tick).format('hh:mma')
+                format: tick => moment(tick).format('h:mma')
             }
         }
     }
 
+    const dollarFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    });
+
     const selectedAsset = 'BTC'
     const [dataSeries, setDataSeries] = useState(null)
     const [selectedPeriod, setSelectedPeriod] = useState('1Y')
-    const [chartConfig, setChartConfig] = useState(chartConfigOptions[selectedPeriod])
     const chartPeriods = ['1Y', '6M', '3M', '1M', '1W', '1D']
 
     useEffect( () => {
@@ -76,15 +80,11 @@ const Chart = () => {
         })
     }, [selectedPeriod])
 
-    const toDollarFormat = x => {
-        return '$' + x?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
     const Tooltip = value => {
         return (
             <div style={{background: colors.dark, color:'white', padding: '10px', borderRadius: '10px'}}>
                 <div>
-                    {toDollarFormat(value.slice.points[0].data.y)}
+                    {dollarFormatter.format(value.slice.points[0].data.y)}
                 </div>
                 <div style={{fontSize: '12px', color: colors.gray}}>
                     {moment(value.slice.points[0].data.x).format('MMM D hh:mm')}
@@ -95,7 +95,7 @@ const Chart = () => {
 
     const getCurrentValue = () => {
         if (dataSeries) {
-            return(toDollarFormat(dataSeries.data[0].data[dataSeries.data[0].data.length - 1].y))
+            return(dollarFormatter.format(dataSeries.data[0].data[dataSeries.data[0].data.length - 1].y))
         }
         return ''
     }
