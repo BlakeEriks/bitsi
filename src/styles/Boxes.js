@@ -14,6 +14,7 @@ export const VerticalFlexBox = styled.div`
     flex-direction: column;
     align-items: ${props => props.alignItems || 'flex-start'};
     width: ${props => props.width || 'auto'};
+    padding: ${props => props.padding || '0'};
 `
 
 export const SidePanelContainer = styled.div`
@@ -22,21 +23,24 @@ export const SidePanelContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     width: calc(50% / 3);
-    border-top: 1px solid #eeeff3;
+    background: ${colors.dark}
 `
 
 export const DashboardContainer = styled.div`
+    background: ${colors.gray};
     display: flex;
     flex-direction: row;
-    background: ${colors.light};
-    width: calc(100%);
-    justify-content: space-around;
-    /* justify-content: ;
-    align-items:  */
+    width: 100%;
+    padding: 50px;
+    border-top-left-radius: 50px;
 `
 
 export const Card = styled.div`
     box-shadow: 0 10px 30px rgb(209 213 223 / 50%);
     border-radius: 1rem;
-    padding: 50px;
+    padding: 5px;
+    height: ${props => props.height || 'auto'};
+    width: ${props => props.width || '15em'};
+    background: ${colors.dark};
+    margin: 10px;
 `
