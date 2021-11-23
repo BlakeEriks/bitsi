@@ -20,6 +20,18 @@ export const ChartHeader = styled.div`
     margin: 10px auto 0px auto;
 `
 
+export const ChartBackground = styled.div`
+    margin: 0 auto;
+    height: 21.2em;
+    width: 95.5%;
+    background: #222222;
+    border-radius: 10px;
+    position: relative;
+    top: 0px;
+    border: 1px solid ${colors.gray};
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 50px;
+`
+
 export const ChartCurrentValue = styled.div`
     color: white;
     position: relative;
@@ -42,6 +54,20 @@ export const ChartPeriodButton = styled.div`
     transition: all 0.2s;
 
     &:hover {
-        color: ${props => props.selected ? '' : colors.light}
+        color: ${props => props.selected ? '' : colors.light};
     }
+`
+
+export const ToolTipContainer = styled.div`
+    background: ${colors.dark}; 
+    color: ${colors.light}; 
+    padding: 10px; 
+    border-radius: 10px;
+`
+
+export const ToolTipMainText = styled.div``
+
+export const ToolTipSubText = styled.div`
+    font-size: 12px;
+    color: ${colors.gray};
 `
