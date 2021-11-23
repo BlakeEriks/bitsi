@@ -15,8 +15,26 @@ export const HeaderTitle = styled.div`
     margin: 1rem;
 `
 
-export const HeaderUsername = styled.div`
+export const HeaderContent = styled.div`
     font-size: 2em;
     color: ${colors.light};
     margin: 1rem;
+    display: flex;
+`
+
+export const HeaderLink = styled.div`
+    font-size: large;
+    color: ${colors.gray};
+    padding: 0 20px;
+    cursor: pointer;
+    transition: all 0.1s;
+
+    &:hover {
+        color: ${colors.light}
+    }
+`
+
+export const HeaderLinkDivider = styled.div`
+    border: 1px solid ${colors.gray};
+    
 `
