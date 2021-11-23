@@ -10,14 +10,18 @@ const useTokenPrices = () => {
 
 const useTokenPrice = symbol => {
     const http = useHttp()
-    return useQuery(`tokens/prices/${symbol}`, () => http.get(`${API_BASE_URL}/tokens/prices/${symbol}`), {enabled: !!symbol})
+    return useQuery(`tokens/prices/${symbol}`, async () => {
+        return await http.get(`${API_BASE_URL}/tokens/prices/${symbol}`)
+        
+    }, {enabled: !!symbol})
 }
 
 const useTokenHistory = (symbol, period) => {
     const http = useHttp()
     return useQuery(`tokens/history/${symbol}/${period}`, async () => {
         return await http.get(`${API_BASE_URL}/tokens/history/${symbol}/${period}`)
-    }, {enabled: !!symbol && !!period})
+    }, 
+    {enabled: !!symbol && !!period, keepPreviousData: true})
 }
 
 export { useTokenPrice, useTokenPrices, useTokenHistory };
