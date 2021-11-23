@@ -1,20 +1,29 @@
 import { ResponsiveLine } from "@nivo/line"
 import moment from "moment"
 import { useEffect, useState } from "react"
+import { useTokenPrice } from "../hooks/token"
 import { Card } from "../styles/Boxes"
 import { ChartContainer, ChartCurrentValue, ChartHeader, ChartPeriodButton, ChartPeriodSelector, ChartTitle } from "../styles/Chart"
 import { colors } from "../styles/Colors"
 
+const periodNameConversion = {
+    '1Y': 'year',
+    '6M': 'sixMonths',
+    '3M': 'threeMonths',
+    '1M': 'month',
+    '1W': 'week',
+    '1D': 'day'
+}
+
 const Chart = () => {
 
-    const periodNameConversion = {
-        '1Y': 'year',
-        '6M': 'sixMonths',
-        '3M': 'threeMonths',
-        '1M': 'month',
-        '1W': 'week',
-        '1D': 'day'
-    }
+    const selectedAsset = 'BTC'
+
+    const tokenPrice = useTokenPrice(selectedAsset)
+    const [selectedPeriod, setSelectedPeriod] = useState('1Y')
+    const chartPeriods = ['1Y', '6M', '3M', '1M', '1W', '1D']
+    const [dataSeries, setDataSeries] = useState(null)
+    // const tokenHistory = useTokenHistory(selectedAsset, periodNameConversion[selectedPeriod])
 
     const chartConfigOptions = {
         '1Y' : {
@@ -60,11 +69,6 @@ const Chart = () => {
         currency: 'USD'
     });
 
-    const selectedAsset = 'BTC'
-    const [dataSeries, setDataSeries] = useState(null)
-    const [selectedPeriod, setSelectedPeriod] = useState('1Y')
-    const chartPeriods = ['1Y', '6M', '3M', '1M', '1W', '1D']
-
     useEffect( () => {
         fetch(`http://localhost:4000/tokens/history/${selectedAsset}/${periodNameConversion[selectedPeriod]}`)
         .then( async res => {
@@ -94,8 +98,8 @@ const Chart = () => {
     }
 
     const getCurrentValue = () => {
-        if (dataSeries) {
-            return(dollarFormatter.format(dataSeries.data[0].data[dataSeries.data[0].data.length - 1].y))
+        if (tokenPrice.data) {
+            return dollarFormatter.format(tokenPrice.data.price)
         }
         return ''
     }
