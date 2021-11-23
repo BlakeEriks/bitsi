@@ -33,6 +33,7 @@ export const DashboardContainer = styled.div`
     width: 100%;
     padding: 50px;
     border-top-left-radius: 50px;
+    box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset;
 `
 
 export const Card = styled.div`
