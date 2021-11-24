@@ -1,11 +1,13 @@
 import { useState } from "react"
+import { useAuthState } from "../hooks/auth"
 import useUserActions from "../hooks/user"
  
-const Login = () => { 
+const Signup = () => { 
     
     const userActions = useUserActions()
     const [form, setForm] = useState({username: '', password: ''})
     const [badLogin, setBadLogin] = useState(false)
+    const [auth] = useAuthState()
 
     const handleSubmit = async event => {
         event.preventDefault()
@@ -30,6 +32,7 @@ const Login = () => {
                 <div>
                     <input type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></input>
                 </div>
+
                 <div>
                     <button type="submit" value="Login">Login</button>
                 </div>
@@ -38,4 +41,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Signup

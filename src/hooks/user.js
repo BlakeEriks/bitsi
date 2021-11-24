@@ -1,5 +1,5 @@
-import useHttp from "../http";
 import { useAuthState } from "./auth";
+import useHttp from "./http";
 
 const useUserActions = () => {
     
@@ -10,7 +10,7 @@ const useUserActions = () => {
     const login = ({ username, password }) => {
         return http.post(`${API_BASE_URL}/authenticate`, {username, password})
             .then( data => {
-                localStorage.setItem('token', JSON.stringify(data));
+                localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
             })
     }
