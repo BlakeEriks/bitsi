@@ -1,9 +1,14 @@
 import { SidePanelContainer } from "../styles/Boxes"
+import { BalanceText } from "../styles/SidePanel"
 
 const SidePanel = () => {
+
     return (
         <SidePanelContainer>
-            hello
+                Balance
+            <BalanceText>
+            
+            </BalanceText>
         </SidePanelContainer>
     )
 }

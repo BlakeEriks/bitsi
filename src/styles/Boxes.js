@@ -21,9 +21,11 @@ export const SidePanelContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     width: calc(50% / 3);
-    background: ${colors.dark}
+    background: ${colors.dark};
+    margin-top: 50px;
+    color: ${colors.gray};
 `
 
 export const DashboardContainer = styled.div`
@@ -44,4 +46,8 @@ export const Card = styled.div`
     width: ${props => props.width || '15em'};
     background: ${colors.dark};
     margin: 10px;
+`
+
+export const ZeroHeightDiv = styled.div`
+    height: 0;
 `

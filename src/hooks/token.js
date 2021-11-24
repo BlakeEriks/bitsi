@@ -5,14 +5,15 @@ const API_BASE_URL = process.env.REACT_APP_API_URL
 
 const useTokenPrices = () => {
     const http = useHttp()
-    return useQuery('tokens/prices', () => () => http.get(`${API_BASE_URL}/tokens/prices`))
+    return useQuery('tokens/prices', async () => {
+        return await http.get(`${API_BASE_URL}/tokens/prices`)
+    })
 }
 
 const useTokenPrice = symbol => {
     const http = useHttp()
     return useQuery(`tokens/prices/${symbol}`, async () => {
         return await http.get(`${API_BASE_URL}/tokens/prices/${symbol}`)
-        
     }, {enabled: !!symbol})
 }
 

@@ -3,11 +3,7 @@ import { useEffect, useState } from "react"
 import { useTokenHistory } from "./token"
 
 const convertDataToChartDataFormat = (data, symbol) => {
-    const chartData = [{id : symbol, data : []}]
-    data.values.forEach( (value, index) => {
-        chartData[0].data.push({x: new Date(value.timestamp), y: Number(value.price)})
-    })
-    return chartData
+    return [{id : symbol, data : data.values.map(value => ({x: new Date(value.timestamp), y: Number(value.price)}))}]
 }
 
 const chartConfigOptions = {
