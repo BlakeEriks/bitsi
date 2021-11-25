@@ -12,7 +12,7 @@ const Signup = () => {
     const handleSubmit = async event => {
         event.preventDefault()
         try {
-            await userActions.login({...form})
+            await userActions.register({...form})
         }
         catch (err) {
             setBadLogin(true)
@@ -25,7 +25,7 @@ const Signup = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} action="" method="post">
+            <form onSubmit={handleSubmit} method="post">
                 <div>
                     <input type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></input>
                 </div>
