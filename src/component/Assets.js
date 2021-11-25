@@ -1,5 +1,5 @@
 import { useAuthState } from "../hooks/auth"
-import usePortfolio from "../hooks/portfolio"
+import { usePortfolio } from "../hooks/portfolio"
 import { Card } from "../styles/Boxes"
 
 const Assets = () => {
