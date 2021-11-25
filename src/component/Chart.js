@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { useTokenPrice } from "../hooks/token"
+import { useToken } from "../hooks/token"
 import { ZeroHeightDiv } from "../styles/Boxes"
 import { ChartBackground, ChartContainer, ChartCurrentValue, ChartHeader, ChartPeriodButton, ChartPeriodSelector, ChartTitle } from "../styles/Chart"
+import toDollarFormat from "../util/dollarFormat"
 import LineChart from "./LineChart"
 
 const Chart = () => {
@@ -14,19 +15,8 @@ const Chart = () => {
                             {display:'1D', name: 'day'}, ]
                             
     const selectedToken = 'BTC'
-    const tokenPrice = useTokenPrice(selectedToken)
+    const {token} = useToken(selectedToken)
     const [selectedPeriod, setSelectedPeriod] = useState('year')
-
-    const dollarFormatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    });
-
-    const getCurrentValue = () => {
-        if (tokenPrice.data) {
-            return dollarFormatter.format(tokenPrice.data.price)
-        }
-    }
 
     return (
         <>
@@ -38,7 +28,7 @@ const Chart = () => {
             </ZeroHeightDiv>
             <ChartHeader>
                 <ChartCurrentValue>
-                    {getCurrentValue()}
+                    {toDollarFormat(token?.price)}
                 </ChartCurrentValue>
                 <ChartPeriodSelector>
                     {chartPeriods.map( (period, index) => 
