@@ -1,10 +1,13 @@
 import { useAuthState } from "./auth";
+import { useViewState } from "./view"
 import useHttp from "./http";
 
 const useUserActions = () => {
     
     const http = useHttp()
     const [auth, setAuth] = useAuthState()
+    const [viewState, setViewState] = useViewState()
+
     const API_BASE_URL = process.env.REACT_APP_API_URL
     
     const login = ({ username, password }) => {
@@ -12,6 +15,7 @@ const useUserActions = () => {
             .then( data => {
                 localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
+                setViewState('dashboard')
             })
     }
 
@@ -20,6 +24,7 @@ const useUserActions = () => {
             .then( data => {
                 localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
+                setViewState('dashboard')
             })
     }
 
