@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
-import usePortfolio from "../hooks/portfolio"
 import { useToken, useTokens } from "../hooks/token"
 import { HorizontalFlexBox } from "../styles/Boxes"
 import { TradeButton } from "../styles/Button"
 import { TradeContainer, TradeSelect, TradeOption, TradeInput } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
 import toDollarFormat from "../util/dollarFormat"
+import useTrade from "../hooks/trade"
 
 const Trade = () => {
     const [method, setMethod] = useState("BUY")
@@ -15,7 +15,7 @@ const Trade = () => {
     const { token } = useToken(form.token)
     const { tokens } = useTokens()
     const [auth] = useAuthState()
-    const { makeTrade } = usePortfolio(auth?.username)
+    const makeTrade = useTrade()
 
     const handleChange = (event) =>
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -67,7 +67,7 @@ const Trade = () => {
                 value={form.quantity}
                 onChange={handleChange}
             ></TradeInput>
-            <InfoText>Total: {toDollarFormat(token.price * form.quantity)}</InfoText>
+            <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
             <TradeButton selected type="submit">
             Submit
             </TradeButton>

@@ -1,9 +1,11 @@
 import moment from "moment"
 import { useEffect, useState } from "react"
+import { useChartState } from "./chartState"
+import { usePortfolioHistory } from "./portfolio"
 import { useTokenHistory } from "./token"
 
-const convertDataToChartDataFormat = (data, symbol) => {
-    return [{id : symbol, data : data.values.map(value => ({x: new Date(value.timestamp), y: Number(value.price)}))}]
+const convertDataToChartDataFormat = (data) => {
+    return [{id : 'chartDataId', data : data.values.map(entry => ({x: new Date(entry.timestamp), y: Number(entry.value)}))}]
 }
 
 const chartConfigOptions = {
@@ -15,13 +17,18 @@ const chartConfigOptions = {
     'day' : { axisBottom: { tickValues: 'every 4 hours', format: tick => moment(tick).format('h:mma') } }
 }
 
-const useChartData = (symbol, period) => {
-    const {isSuccess, data} = useTokenHistory(symbol, period)
+const useChartData = (period) => {
+
+    const [chartState] = useChartState()
+    const {mode, token, username} = chartState
+    const tokenHistory = useTokenHistory(token, period)
+    const portfolioHistory = usePortfolioHistory(username, period)
     const [chart, setChart] = useState({data: null, config: null})
+    const {isSuccess, data} = mode === 'token' ? tokenHistory : portfolioHistory
 
     useEffect( () => {
         if (isSuccess) {
-            setChart({data: convertDataToChartDataFormat(data, symbol), config: chartConfigOptions[period]})
+            setChart({data: convertDataToChartDataFormat(data), config: chartConfigOptions[period]})
         }
     }, [data])
 

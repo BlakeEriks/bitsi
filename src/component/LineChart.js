@@ -5,9 +5,9 @@ import { ToolTipContainer, ToolTipMainText, ToolTipSubText } from "../styles/Cha
 import { colors } from "../styles/Colors"
 import toDollarFormat from "../util/dollarFormat"
 
-const LineChart = ({selectedToken, selectedPeriod}) => {
+const LineChart = ({period}) => {
 
-    const {isSuccess, chartConfig, chartData} = useChartData(selectedToken, selectedPeriod)
+    const {isSuccess, chartConfig, chartData} = useChartData(period)
 
     const theme = {
         axis: {
