@@ -5,7 +5,6 @@ export const HorizontalFlexBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: ${props => props.justifyContent || 'space-between'};
-    /* align-items: ${props => props.alignItems || 'center'}; */
     width: ${props => props.width || 'auto'};
 `
 
@@ -22,7 +21,7 @@ export const SidePanelContainer = styled.div`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: calc(50% / 3);
+    width: 15em;
     background: ${colors.dark};
     margin-top: 50px;
     color: ${colors.gray};
@@ -35,6 +34,13 @@ export const DashboardContainer = styled.div`
     padding: 50px;
     border-top-left-radius: 50px;
     box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset;
+    flex: 1;
+`
+
+export const DashboardLeft = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 `
 
 export const Card = styled.div`
@@ -42,9 +48,9 @@ export const Card = styled.div`
     border-radius: 1rem;
     padding: 5px;
     height: ${props => props.height || 'auto'};
-    width: ${props => props.width || '15em'};
     background: ${colors.dark};
     margin: 10px;
+    width: ${props => props.width || 'auto'};
 `
 
 export const ZeroHeightDiv = styled.div`
