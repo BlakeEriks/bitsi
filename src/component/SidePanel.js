@@ -4,6 +4,7 @@ import { SidePanelContainer } from "../styles/Boxes"
 import { BalanceText } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
 import toDollarFormat from "../util/dollarFormat"
+import BiggestMovers from "./BiggestMovers"
 import Trade from "./Trade"
 
 const SidePanel = () => {
@@ -15,9 +16,7 @@ const SidePanel = () => {
         <SidePanelContainer>
             <BalanceText>{toDollarFormat(balance)}</BalanceText>
             <InfoText>Balance</InfoText>
-            <div style={{background: 'black', height: '200px', margin: '30px'}}>
-                biggest movers
-            </div>
+            <BiggestMovers />
             <Trade />
         </SidePanelContainer>
     )
