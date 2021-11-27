@@ -1,20 +1,18 @@
 import { useState } from "react"
-import { useAuthState } from "../hooks/auth"
 import { useToken, useTokens } from "../hooks/token"
+import useTrade from "../hooks/trade"
 import { HorizontalFlexBox } from "../styles/Boxes"
 import { TradeButton } from "../styles/Button"
-import { TradeContainer, TradeSelect, TradeOption, TradeInput } from "../styles/SidePanel"
+import { SubHeader, TradeContainer, TradeInput, TradeSelect } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
 import toDollarFormat from "../util/dollarFormat"
-import useTrade from "../hooks/trade"
 
 const Trade = () => {
     const [method, setMethod] = useState("BUY")
-    const [form, setForm] = useState({ token: "BTC", quantity: "" })
+    const [form, setForm] = useState({ symbol: "BTC", quantity: "" })
     const [errorText, setErrorText] = useState("")
-    const { token } = useToken(form.token)
+    const { token } = useToken(form.symbol)
     const { tokens } = useTokens()
-    const [auth] = useAuthState()
     const makeTrade = useTrade()
 
     const handleChange = (event) =>
@@ -25,7 +23,7 @@ const Trade = () => {
         /* execute the trade */
         const order = {
             method,
-            symbol: form.token,
+            symbol: form.symbol,
             quantity: Number(form.quantity),
             price: token.price,
         }
@@ -33,10 +31,10 @@ const Trade = () => {
         const res = await makeTrade(order)
         setErrorText(res.success ? "" : res.error)
     }
-
+    
   return (
     <TradeContainer>
-        <InfoText>Make A Trade</InfoText>
+        <SubHeader>Make A Trade</SubHeader>
         <HorizontalFlexBox justifyContent="space-around" width="80%">
             <TradeButton
                 selected={method === "BUY"}
@@ -53,10 +51,10 @@ const Trade = () => {
         </HorizontalFlexBox>
         <form onSubmit={handleSubmit}>
             <InfoText>Token</InfoText>
-            <TradeSelect name="token" value={form.token} onChange={handleChange}>
+            <TradeSelect name="token" value={form.symbol} onChange={handleChange}>
                 {tokens?.map((token, index) => (
-                    <option key={index} value={token.token}>
-                        {token.token} {toDollarFormat(token.price)}
+                    <option key={index} value={token.symbol}>
+                        {token.symbol} {toDollarFormat(token.price)}
                     </option>
                 ))}
             </TradeSelect>
