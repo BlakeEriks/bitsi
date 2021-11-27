@@ -1,5 +1,5 @@
 import { useViewState } from "../hooks/view"
-import { Card, DashboardContainer, VerticalFlexBox } from "../styles/Boxes"
+import { Card, DashboardContainer, DashboardLeft } from "../styles/Boxes"
 import Assets from "./Assets"
 import Chart from "./Chart"
 import Leaderboard from "./Leaderboard"
@@ -12,14 +12,14 @@ const Dashboard = () => {
 
     return ( 
         <DashboardContainer>
-            <VerticalFlexBox>
-                <Card width='50em'>
+            <DashboardLeft>
+                <Card>
                     {viewState === 'dashboard' && <Chart />}
                     {viewState === 'login' && <Login />}
                     {viewState === 'signup' && <Signup />}
                 </Card>
                 <Assets />
-            </VerticalFlexBox>
+            </DashboardLeft>
             <Leaderboard />
         </DashboardContainer>
     )

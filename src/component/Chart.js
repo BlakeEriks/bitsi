@@ -35,7 +35,7 @@ const Chart = () => {
         if (!assets) return 0
         let value = 0
         for (const asset of assets) { // {symbol}
-            const token = tokens.find( token => token.token === asset.symbol)
+            const token = tokens.find( token => token.symbol === asset.symbol)
             value += token.price * asset.quantity
         }
         return value + balance

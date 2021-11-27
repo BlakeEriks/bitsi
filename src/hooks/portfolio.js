@@ -18,4 +18,11 @@ const usePortfolioHistory = (username, period) => {
     }, {enabled: !!username && !!period, keepPreviousData: true})
 }
 
-export { usePortfolio, usePortfolioHistory }
+const useAllPortfolios = () => {
+    const http = useHttp()
+    return useQuery(`/portfolio`, async () => {
+        return await http.get(`${API_BASE_URL}/portfolio`)
+    }, {keepPreviousData: true})
+}
+
+export { usePortfolio, usePortfolioHistory, useAllPortfolios }
