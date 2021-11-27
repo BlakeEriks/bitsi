@@ -3,6 +3,7 @@ import moment from "moment"
 import useChartData from "../hooks/chartData"
 import { ToolTipContainer, ToolTipMainText, ToolTipSubText } from "../styles/Chart"
 import { colors } from "../styles/Colors"
+import toDollarFormat from "../util/dollarFormat"
 
 const LineChart = ({selectedToken, selectedPeriod}) => {
 
@@ -26,16 +27,11 @@ const LineChart = ({selectedToken, selectedPeriod}) => {
         }
     }
 
-    const dollarFormatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-    });
-
     const Tooltip = value => {
         return (
             <ToolTipContainer>
                 <ToolTipMainText>
-                    {dollarFormatter.format(value.slice.points[0].data.y)}
+                    {toDollarFormat(value.slice.points[0].data.y)}
                 </ToolTipMainText>
                 <ToolTipSubText>
                     {moment(value.slice.points[0].data.x).format('MMM D hh:mm')}

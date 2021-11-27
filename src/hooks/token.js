@@ -3,17 +3,22 @@ import useHttp from "./http";
  
 const API_BASE_URL = process.env.REACT_APP_API_URL
 
-const useTokenPrices = () => {
+const useTokens = () => {
     const http = useHttp()
-    return useQuery('tokens/prices', () => () => http.get(`${API_BASE_URL}/tokens/prices`))
+    const{data, isSuccess} = useQuery('tokens/prices', async () => {
+        return await http.get(`${API_BASE_URL}/tokens/prices`)
+    })
+
+    return {tokens: data, isSuccess}
 }
 
-const useTokenPrice = symbol => {
+const useToken = symbol => {
     const http = useHttp()
-    return useQuery(`tokens/prices/${symbol}`, async () => {
+    const {isSuccess, data} = useQuery(`tokens/prices/${symbol}`, async () => {
         return await http.get(`${API_BASE_URL}/tokens/prices/${symbol}`)
-        
     }, {enabled: !!symbol})
+
+    return {token: data, isSuccess}
 }
 
 const useTokenHistory = (symbol, period) => {
@@ -24,4 +29,4 @@ const useTokenHistory = (symbol, period) => {
     {enabled: !!symbol && !!period, keepPreviousData: true})
 }
 
-export { useTokenPrice, useTokenPrices, useTokenHistory };
+export { useToken, useTokens, useTokenHistory };

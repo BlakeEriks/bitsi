@@ -23,7 +23,7 @@ const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} action="" method="post">
+            <form onSubmit={handleSubmit} method="post">
                 <div>
                     <input type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></input>
                 </div>

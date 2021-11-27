@@ -21,16 +21,17 @@ export const SidePanelContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     width: calc(50% / 3);
-    background: ${colors.dark}
+    background: ${colors.dark};
+    margin-top: 50px;
+    color: ${colors.gray};
 `
 
 export const DashboardContainer = styled.div`
     background: ${colors.gray};
     display: flex;
     flex-direction: row;
-    width: 100%;
     padding: 50px;
     border-top-left-radius: 50px;
     box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset;
@@ -44,4 +45,8 @@ export const Card = styled.div`
     width: ${props => props.width || '15em'};
     background: ${colors.dark};
     margin: 10px;
+`
+
+export const ZeroHeightDiv = styled.div`
+    height: 0;
 `
