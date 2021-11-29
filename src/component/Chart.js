@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useTokenPrice } from "../hooks/token"
-import { ZeroHeightDiv } from "../styles/Boxes"
+// import { ZeroHeightDiv } from "../styles/Boxes"
 import { ChartBackground, ChartContainer, ChartCurrentValue, ChartHeader, ChartPeriodButton, ChartPeriodSelector, ChartTitle } from "../styles/Chart"
 import LineChart from "./LineChart"
 
