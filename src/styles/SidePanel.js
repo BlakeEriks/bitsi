@@ -9,7 +9,7 @@ export const BalanceText = styled.div`
 `;
 
 export const MoversContainer = styled(VerticalFlexBox)`
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
 `
 

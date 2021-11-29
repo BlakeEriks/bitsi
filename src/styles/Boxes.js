@@ -5,6 +5,7 @@ export const HorizontalFlexBox = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: ${props => props.justifyContent || 'space-between'};
+    align-items: ${props => props.alignItems || 'flex-start'};
     width: ${props => props.width || 'auto'};
 `
 

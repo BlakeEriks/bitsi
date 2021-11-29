@@ -3,7 +3,7 @@ import { colors } from "./Colors";
 
 export const ChartTitle = styled.div`
     text-align: left;
-    font-size: 60px;
+    font-size: 3em;
     margin: 10px 30px 0px 30px;
     color: ${colors.light}
 `
