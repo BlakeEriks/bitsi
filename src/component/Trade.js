@@ -5,7 +5,7 @@ import { HorizontalFlexBox } from "../styles/Boxes"
 import { TradeButton } from "../styles/Button"
 import { SubHeader, TradeContainer, TradeInput, TradeSelect } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
-import toDollarFormat from "../util/dollarFormat"
+import { toDollarFormat } from "../util/dollarUtil"
 
 const Trade = () => {
     const [method, setMethod] = useState("BUY")
@@ -51,7 +51,7 @@ const Trade = () => {
         </HorizontalFlexBox>
         <form onSubmit={handleSubmit}>
             <InfoText>Token</InfoText>
-            <TradeSelect name="token" value={form.symbol} onChange={handleChange}>
+            <TradeSelect name="symbol" value={form.symbol} onChange={handleChange}>
                 {tokens?.map((token, index) => (
                     <option key={index} value={token.symbol}>
                         {token.symbol} {toDollarFormat(token.price)}
