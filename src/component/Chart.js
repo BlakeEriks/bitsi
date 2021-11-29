@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import { useChartState } from "../hooks/chartState"
 import { usePortfolio } from "../hooks/portfolio"
-import { useToken, useTokens } from "../hooks/token"
+import { useToken } from "../hooks/token"
 import { ZeroHeightDiv } from "../styles/Boxes"
 import { ChartBackground, ChartContainer, ChartCurrentValue, ChartHeader, ChartPeriodButton, ChartPeriodSelector, ChartTitle } from "../styles/Chart"
-import toDollarFormat from "../util/dollarFormat"
+import { toDollarFormat } from "../util/dollarUtil"
 import LineChart from "./LineChart"
 
 const Chart = () => {
@@ -22,32 +22,19 @@ const Chart = () => {
     const [auth] = useAuthState()
     const [chartState, setChartState] = useChartState()
     const {token} = useToken(chartState.token)
-    const {tokens} = useTokens()
-    const {assets, balance} = usePortfolio(chartState.username)
+    const {value} = usePortfolio(chartState.username)
     const [selectedPeriod, setSelectedPeriod] = useState('year')
 
     useEffect( () => {
-        setChartState({mode: 'portfolio', username: auth.username})
+        setChartState({mode: 'portfolio', username: auth?.username})
     }, [])
 
-    /* TODO move these to portfolio hook or chart state */
-    const calculatePortfolioValue = () => {
-        if (!assets) return 0
-        let value = 0
-        for (const asset of assets) { // {symbol}
-            const token = tokens.find( token => token.symbol === asset.symbol)
-            value += token.price * asset.quantity
-        }
-        return value + balance
-    }
-
     const getDisplayValue = () => {
-        const value = (chartState.mode === 'portfolio') ? calculatePortfolioValue() : token?.price
-        return toDollarFormat(value)
+        return toDollarFormat(chartState.mode === 'portfolio' ? value : token?.price)
     }
 
     const getChartTitle = () => {
-        const userString = chartState.username === auth.username ? 'My' : chartState?.username + '\'s'
+        const userString = !auth || chartState.username === auth.username ? 'My' : chartState?.username + '\'s'
         return (chartState.mode === 'portfolio') ? userString + ' Portfolio' : token?.name
     }
 
