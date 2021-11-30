@@ -1,5 +1,7 @@
 import { useState } from "react"
 import useUserActions from "../hooks/user"
+import { LoginButton } from "../styles/Button"
+import { LoginInput } from "../styles/Input"
  
 const Login = () => { 
     
@@ -25,13 +27,13 @@ const Login = () => {
         <div>
             <form onSubmit={handleSubmit} method="post">
                 <div>
-                    <input type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></input>
+                    <LoginInput type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></LoginInput>
                 </div>
                 <div>
-                    <input type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></input>
+                    <LoginInput type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></LoginInput>
                 </div>
                 <div>
-                    <button type="submit" value="Login">Login</button>
+                    <LoginButton type="submit" value="Login">Login</LoginButton>
                 </div>
             </form>
         </div>

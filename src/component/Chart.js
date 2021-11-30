@@ -28,7 +28,7 @@ const Chart = () => {
 
     useEffect( () => {
         setChartState({mode: 'portfolio', username: auth?.username})
-    }, [])
+    }, [auth])
     
     const getDisplayValue = () => {
         return toDollarFormat(chartState.mode === 'portfolio' ? (isNaN(value) ? 0 : value) : token?.price)
