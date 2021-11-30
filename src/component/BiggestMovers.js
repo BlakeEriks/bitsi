@@ -28,7 +28,7 @@ const BiggestMovers = () => {
                     <InfoText>
                         {toDollarFormat(token.price)}
                         <PercentChange positive={token.percentChange > 0}>
-                            ({(token.percentChange > 0 ? '+' : '-') + token.percentChange}%)
+                            ({(token.percentChange > 0 ? '+' : '') + token.percentChange}%)
                         </PercentChange>
                     </InfoText>
                 </Mover>)}

@@ -6,5 +6,10 @@ export const Entry = styled.div`
     align-items: center;
     width: 100%;
     font-size: 20px;
-    margin: 10px 0;
+    padding: 10px 0;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(255,255,255,0.2);
+    }
 `

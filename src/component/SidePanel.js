@@ -14,8 +14,10 @@ const SidePanel = () => {
 
     return (
         <SidePanelContainer>
-            <BalanceText>{toDollarFormat(balance)}</BalanceText>
-            <InfoText>Balance</InfoText>
+            <div>
+                <BalanceText>{toDollarFormat(isNaN(balance) ? 0 : balance)}</BalanceText>
+                <InfoText>Balance</InfoText>
+            </div>
             <BiggestMovers />
             <Trade />
         </SidePanelContainer>

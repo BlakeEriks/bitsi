@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useAuthState } from "../hooks/auth"
 import { useToken, useTokens } from "../hooks/token"
 import useTrade from "../hooks/trade"
 import { HorizontalFlexBox } from "../styles/Boxes"
@@ -8,6 +9,8 @@ import { InfoText } from "../styles/Text"
 import { toDollarFormat } from "../util/dollarUtil"
 
 const Trade = () => {
+
+    const [auth] = useAuthState()
     const [method, setMethod] = useState("BUY")
     const [form, setForm] = useState({ symbol: "BTC", quantity: "" })
     const [errorText, setErrorText] = useState("")
@@ -29,9 +32,10 @@ const Trade = () => {
         }
 
         const res = await makeTrade(order)
+        setForm({ symbol: "BTC", quantity: "" })
         setErrorText(res.success ? "" : res.error)
     }
-    
+
   return (
     <TradeContainer>
         <SubHeader>Make A Trade</SubHeader>
@@ -66,7 +70,7 @@ const Trade = () => {
                 onChange={handleChange}
             ></TradeInput>
             <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
-            <TradeButton selected type="submit">
+            <TradeButton selected type="submit" disabled={!auth}>
             Submit
             </TradeButton>
             <div>{errorText}</div>

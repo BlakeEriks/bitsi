@@ -3,8 +3,9 @@ import { useAuthState } from "../hooks/auth"
 import { useChartState } from "../hooks/chartState"
 import { usePortfolio } from "../hooks/portfolio"
 import { useToken } from "../hooks/token"
-import { ZeroHeightDiv } from "../styles/Boxes"
+import { HorizontalFlexBox, ZeroHeightDiv } from "../styles/Boxes"
 import { ChartBackground, ChartContainer, ChartCurrentValue, ChartHeader, ChartPeriodButton, ChartPeriodSelector, ChartTitle } from "../styles/Chart"
+import { InfoText } from "../styles/Text"
 import { toDollarFormat } from "../util/dollarUtil"
 import LineChart from "./LineChart"
 
@@ -28,16 +29,26 @@ const Chart = () => {
     useEffect( () => {
         setChartState({mode: 'portfolio', username: auth?.username})
     }, [])
-
+    
     const getDisplayValue = () => {
-        return toDollarFormat(chartState.mode === 'portfolio' ? value : token?.price)
+        return toDollarFormat(chartState.mode === 'portfolio' ? (isNaN(value) ? 0 : value) : token?.price)
     }
-
+    
     const getChartTitle = () => {
-        const userString = !auth || chartState.username === auth.username ? 'My' : chartState?.username + '\'s'
-        return (chartState.mode === 'portfolio') ? userString + ' Portfolio' : token?.name
+        const userString = (!auth && chartState?.username) || (auth?.username !== chartState?.username) ? chartState?.username + '\'s' : 'My'
+        // const userString = auth && chartState.username === auth.username ? 'My' : chartState?.username + '\'s'
+        return (chartState.mode === 'portfolio') ? 
+                userString + ' Portfolio' : 
+                <HorizontalFlexBox>
+                    <div>
+                        {token?.name}
+                    </div>
+                    <InfoText>
+                        {token?.token}
+                    </InfoText>
+                </HorizontalFlexBox>
     }
-
+    
     return (
         <>
             <ChartTitle>

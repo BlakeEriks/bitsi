@@ -20,7 +20,7 @@ const usePortfolio = username => {
 
     const {isSuccess, data} = useQuery(`portfolio/${username}`, async () => {
         return await http.get(`${API_BASE_URL}/portfolio/${username}`)
-    }, {enabled: !!username})
+    }, {enabled: !!username, keepPreviousData: true})
 
     return {
         balance: data?.balance, 
