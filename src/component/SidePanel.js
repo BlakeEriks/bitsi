@@ -3,7 +3,7 @@ import { usePortfolio } from "../hooks/portfolio"
 import { SidePanelContainer } from "../styles/Boxes"
 import { BalanceText } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
-import toDollarFormat from "../util/dollarFormat"
+import { toDollarFormat } from "../util/dollarUtil"
 import BiggestMovers from "./BiggestMovers"
 import Trade from "./Trade"
 
@@ -14,8 +14,10 @@ const SidePanel = () => {
 
     return (
         <SidePanelContainer>
-            <BalanceText>{toDollarFormat(balance)}</BalanceText>
-            <InfoText>Balance</InfoText>
+            <div>
+                <BalanceText>{toDollarFormat(isNaN(balance) ? 0 : balance)}</BalanceText>
+                <InfoText>Balance</InfoText>
+            </div>
             <BiggestMovers />
             <Trade />
         </SidePanelContainer>

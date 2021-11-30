@@ -3,7 +3,7 @@ import moment from "moment"
 import useChartData from "../hooks/chartData"
 import { ToolTipContainer, ToolTipMainText, ToolTipSubText } from "../styles/Chart"
 import { colors } from "../styles/Colors"
-import toDollarFormat from "../util/dollarFormat"
+import { toDollarFormat } from "../util/dollarUtil"
 
 const LineChart = ({period}) => {
 
@@ -41,7 +41,7 @@ const LineChart = ({period}) => {
     }
 
     return (
-        isSuccess &&
+        chartData &&
         <ResponsiveLine
             data={chartData}
             margin={{ top: 20, right: 20, bottom: 40, left: 20 }}

@@ -1,6 +1,8 @@
 import { useChartState } from "../hooks/chartState"
 import { useTokens } from "../hooks/token"
 import { Mover, MoversContainer, PercentChange, SubHeader } from "../styles/SidePanel"
+import { InfoText } from "../styles/Text"
+import { toDollarFormat } from "../util/dollarUtil"
 
 const BiggestMovers = () => {
 
@@ -22,10 +24,13 @@ const BiggestMovers = () => {
             {tokens && 
             getBiggestMovers().map( token => 
                 <Mover key={token.symbol} onClick={() => setChartState({mode: 'token', token: token.symbol})}>
-                    {token.symbol}
-                    <PercentChange positive={token.percentChange > 0}>
-                        {token.percentChange}%
-                    </PercentChange>
+                    {token.symbol + ' '}
+                    <InfoText>
+                        {toDollarFormat(token.price)}
+                        <PercentChange positive={token.percentChange > 0}>
+                            ({(token.percentChange > 0 ? '+' : '') + token.percentChange}%)
+                        </PercentChange>
+                    </InfoText>
                 </Mover>)}
         </MoversContainer>
     )

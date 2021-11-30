@@ -13,6 +13,7 @@ export const HeaderTitle = styled.div`
     font-size: 3em;
     color: ${colors.light};
     margin: 1rem;
+    cursor: pointer;
 `
 
 export const HeaderContent = styled.div`
