@@ -1,6 +1,11 @@
 import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import useUserActions from "../hooks/user"
+
+import { LoginInput } from "../styles/Input"
+import { LoginButton } from "../styles/Button"
+import { Card } from "../styles/Boxes"
+import { Link } from "react-router-dom";
  
 const Signup = () => { 
     
@@ -24,18 +29,22 @@ const Signup = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={handleSubmit} method="post">
+                <fieldset>
+                <Card>
                 <div>
-                    <input type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></input>
+                    <Logininput type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></Logininput>
                 </div>
                 <div>
-                    <input type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></input>
+                    <Logininput type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></Logininput>
                 </div>
 
                 <div>
-                    <button type="submit" value="Login">Login</button>
+                    <Loginbutton type="submit" value="Login">Login</Loginbutton>
                 </div>
+                </Card>
+            </fieldset>
             </form>
         </div>
     )

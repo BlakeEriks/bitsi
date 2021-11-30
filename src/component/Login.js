@@ -1,6 +1,12 @@
-import { useState } from "react"
+import { React , useState } from "react"
 import useUserActions from "../hooks/user"
- 
+
+import { LoginInput } from "../styles/Input"
+import { LoginButton } from "../styles/Button"
+import { Card } from "../styles/Boxes"
+import { Link } from "react-router-dom";
+
+
 const Login = () => { 
     
     const userActions = useUserActions()
@@ -22,19 +28,25 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={handleSubmit} method="post">
+                <fieldset>
+                <Card>
+                
                 <div>
-                    <input type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></input>
+                    <LoginInput type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required></LoginInput>
                 </div>
                 <div>
-                    <input type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></input>
+                    <LoginInput  type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required></LoginInput>
                 </div>
                 <div>
-                    <button type="submit" value="Login">Login</button>
+                    <LoginButton  type="submit" value="Login">Login</LoginButton>
                 </div>
-            </form>
+            </Card>
+            </fieldset>
+        </form>
         </div>
+        
     )
 }
 
