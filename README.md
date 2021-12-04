@@ -4,17 +4,15 @@ JAB is an application built for users to invest in a simulated crpyto exchange a
 
 ## Technologies Used
 
-In the project directory, you can run:
 * React
 * Javascript
-	* Express
-	* Mongoose
+* Express
+* Mongoose
 * Mongodb
 * HTML
 * CSS
 * Heroku Deployment
 * Netlify Deployment
-
 
 ## Installation and Setup Instructions
 
@@ -26,12 +24,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 * Coin API
 * Messari API
 
-
-## Reflection 
+## Reflection
 
 This project was built by three members, aka Team JAB, for our Unit 3 React Project. Our project goals included using technologies learned up to this point and practicing our dev skills along with working in a collaborative environment. In addition, we added User Authentication where we can register, create, and sign-up.  
 
 ### This application is built upon:
+
 * Three object models: User, Portfolio, and Tokens
 * A full CRUD express API for user portfolios and tokens
 * A single-page built with React, giving users the ability to create their own cryptocurrency stock portfolio and manage a base $100,000 within our simulated exchange
@@ -43,5 +41,3 @@ Our main and biggest challenge was managing our API’s, specifically Binance. I
 
 * Create a more versatile exchange with more coin options = more API calls which make it more difficult
 * User can click a single `liquidate` button to liquidate all assets back into USD
-
-
