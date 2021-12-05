@@ -6,12 +6,12 @@ export const HeaderContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: ${colors.dark}
+    background: white;
 `
 
 export const HeaderTitle = styled.div`
     font-size: 3em;
-    color: ${colors.light};
+    color: ${colors.dark};
     margin: 1rem;
     cursor: pointer;
 `

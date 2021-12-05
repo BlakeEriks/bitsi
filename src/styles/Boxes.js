@@ -24,7 +24,7 @@ export const SidePanelContainer = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 15em;
-    background: ${colors.dark};
+    background: white;
     color: ${colors.gray};
     height: 100%;
     padding: 70px 0;
@@ -32,13 +32,13 @@ export const SidePanelContainer = styled.div`
 `
 
 export const DashboardContainer = styled.div`
-    background: ${colors.gray};
+    background: ${colors.light};
     display: flex;
     flex-direction: row;
     padding: 50px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset;
+    /* box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset; */
     flex: 1;
     height: 100%;
     box-sizing: border-box;
@@ -56,7 +56,7 @@ export const Card = styled.div`
     border-radius: 1rem;
     padding: 5px;
     height: ${props => props.height || 'auto'};
-    background: ${colors.dark};
+    background: white;
     margin: 10px;
     width: ${props => props.width || 'auto'};
 `
