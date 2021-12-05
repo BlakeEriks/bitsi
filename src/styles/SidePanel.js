@@ -3,7 +3,7 @@ import { VerticalFlexBox } from "./Boxes";
 import { colors } from "./Colors";
 
 export const BalanceText = styled.div`
-  color: ${colors.light};
+  color: ${colors.dark};
   font-size: 2em;
   border-bottom: 1px solid ${colors.gray};
 `;
@@ -56,5 +56,5 @@ export const SubHeader  = styled.div`
     justify-content: center;
     width: 100%;
     font-size: 24px;
-    color: ${colors.light};
+    color: ${colors.dark};
 `
