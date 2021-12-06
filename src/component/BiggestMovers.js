@@ -1,6 +1,7 @@
 import { useChartState } from "../hooks/chartState"
 import { useTokens } from "../hooks/token"
-import { Mover, MoversContainer, PercentChange, SubHeader } from "../styles/SidePanel"
+import { Card } from "../styles/Boxes"
+import { Mover, PercentChange, SubHeader } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
 import { toDollarFormat } from "../util/dollarUtil"
 
@@ -17,7 +18,7 @@ const BiggestMovers = () => {
     }
 
     return (
-        <MoversContainer>
+        <Card>
             <SubHeader>
                 Top Movers    
             </SubHeader>
@@ -32,7 +33,7 @@ const BiggestMovers = () => {
                         </PercentChange>
                     </InfoText>
                 </Mover>)}
-        </MoversContainer>
+        </Card>
     )
 }
 
