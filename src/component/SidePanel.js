@@ -1,25 +1,20 @@
-import { useAuthState } from "../hooks/auth"
-import { usePortfolio } from "../hooks/portfolio"
 import { SidePanelContainer } from "../styles/Boxes"
-import { BalanceText } from "../styles/SidePanel"
-import { InfoText } from "../styles/Text"
-import { toDollarFormat } from "../util/dollarUtil"
-import BiggestMovers from "./BiggestMovers"
-import Trade from "./Trade"
+import { IconButton } from "../styles/Button"
+import { CoinsIcon, DoorClosedIcon, HomeIcon } from "../styles/Icon"
 
 const SidePanel = () => {
 
-    const [auth] = useAuthState()
-    const {balance} = usePortfolio(auth?.username)
-
     return (
         <SidePanelContainer>
-            <div>
-                <BalanceText>{toDollarFormat(isNaN(balance) ? 0 : balance)}</BalanceText>
-                <InfoText>Balance</InfoText>
-            </div>
-            <BiggestMovers />
-            <Trade />
+            <IconButton>
+                <HomeIcon />
+            </IconButton>
+            <IconButton>
+                <CoinsIcon />
+            </IconButton>
+            <IconButton>
+                <DoorClosedIcon />
+            </IconButton>
         </SidePanelContainer>
     )
 }

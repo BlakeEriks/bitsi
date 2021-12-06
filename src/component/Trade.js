@@ -2,9 +2,9 @@ import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import { useToken, useTokens } from "../hooks/token"
 import useTrade from "../hooks/trade"
-import { HorizontalFlexBox } from "../styles/Boxes"
+import { Card, HorizontalFlexBox } from "../styles/Boxes"
 import { TradeButton } from "../styles/Button"
-import { SubHeader, TradeContainer, TradeInput, TradeSelect } from "../styles/SidePanel"
+import { SubHeader, TradeInput, TradeSelect } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
 import { toDollarFormat } from "../util/dollarUtil"
 
@@ -37,7 +37,7 @@ const Trade = () => {
     }
 
   return (
-    <TradeContainer>
+    <Card>
         <SubHeader>Make A Trade</SubHeader>
         <HorizontalFlexBox justifyContent="space-around" width="80%">
             <TradeButton
@@ -75,7 +75,7 @@ const Trade = () => {
             </TradeButton>
             <div>{errorText}</div>
         </form>
-    </TradeContainer>
+    </Card>
   )
 }
 
