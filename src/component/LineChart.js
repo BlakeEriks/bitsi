@@ -20,7 +20,7 @@ const LineChart = ({period}) => {
         },
         crosshair: {
             line: {
-                stroke: colors.light,
+                stroke: colors.gray,
                 strokeWidth: 1,
                 strokeOpacity: 0.35,
             },
@@ -44,6 +44,7 @@ const LineChart = ({period}) => {
         chartData &&
         <ResponsiveLine
             data={chartData}
+            colors={colors.accent}
             margin={{ top: 20, right: 20, bottom: 40, left: 20 }}
             xScale={{ type: 'time'}}
             enableGridX={false}

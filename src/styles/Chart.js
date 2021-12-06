@@ -10,6 +10,7 @@ export const ChartTitle = styled.div`
 
 export const ChartContainer = styled.div`
     height: 20em;
+    min-width: 40em;
 `
 
 export const ChartHeader = styled.div`
@@ -24,7 +25,7 @@ export const ChartBackground = styled.div`
     margin: 0 auto;
     height: 21.2em;
     width: 95.5%;
-    background: #222222;
+    background: ${colors.light};
     border-radius: 10px;
     position: relative;
     top: 0px;
@@ -33,7 +34,7 @@ export const ChartBackground = styled.div`
 `
 
 export const ChartCurrentValue = styled.div`
-    color: white;
+    color: ${colors.dark};
     position: relative;
     z-index: 1;
     font-size: 2.5em;
@@ -49,12 +50,12 @@ export const ChartPeriodSelector = styled.div`
 export const ChartPeriodButton = styled.div`
     cursor: pointer;
     font-size: 1em;
-    color: ${props => props.selected ? colors.highlight : colors.gray};
+    color: ${props => props.selected ? colors.accent : colors.gray};
     padding: 0 5px;
     transition: all 0.2s;
 
     &:hover {
-        color: ${props => props.selected ? '' : colors.light};
+        color: ${props => props.selected ? '' : colors.accent};
     }
 `
 

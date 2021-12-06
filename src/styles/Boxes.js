@@ -23,7 +23,7 @@ export const SidePanelContainer = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 15em;
+    width: 5em;
     background: white;
     color: ${colors.gray};
     height: 100%;
@@ -35,10 +35,10 @@ export const DashboardContainer = styled.div`
     background: ${colors.light};
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 50px;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
-    /* box-shadow: 0 10px 30px rgb(30 30 30 / 50%) inset; */
     flex: 1;
     height: 100%;
     box-sizing: border-box;

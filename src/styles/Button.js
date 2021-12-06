@@ -7,6 +7,10 @@ const Button = styled.button`
     border: none;
 `
 
+export const IconButton = styled(Button)`
+    background: white;
+`
+
 export const LoginButton = styled(Button)`
     border: none;
     outline: none;

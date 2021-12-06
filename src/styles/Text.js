@@ -6,5 +6,5 @@ export const InfoText = styled.div`
 `
 
 export const NameText = styled.div`
-    color: ${colors.highlight};
+    color: ${colors.accent};
 `

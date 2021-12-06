@@ -31,7 +31,6 @@ export const TradeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid ${colors.gray};
   border-radius: 10px;
   width: 90%;
 `;
