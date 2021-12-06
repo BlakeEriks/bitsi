@@ -10,7 +10,7 @@ const useHttp = () => {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
-                    'token': auth.token
+                    'token': auth?.token
                 }
             };
             if (body) {
