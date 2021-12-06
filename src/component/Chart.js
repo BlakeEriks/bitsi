@@ -33,10 +33,9 @@ const Chart = () => {
     const getDisplayValue = () => {
         return toDollarFormat(chartState.mode === 'portfolio' ? (isNaN(value) ? 0 : value) : token?.price)
     }
-    
+
     const getChartTitle = () => {
         const userString = (!auth && chartState?.username) || (auth?.username !== chartState?.username) ? chartState?.username + '\'s' : 'My'
-        // const userString = auth && chartState.username === auth.username ? 'My' : chartState?.username + '\'s'
         return (chartState.mode === 'portfolio') ? 
                 userString + ' Portfolio' : 
                 <HorizontalFlexBox>
@@ -44,7 +43,7 @@ const Chart = () => {
                         {token?.name}
                     </div>
                     <InfoText>
-                        {token?.token}
+                        {token?.symbol}
                     </InfoText>
                 </HorizontalFlexBox>
     }
