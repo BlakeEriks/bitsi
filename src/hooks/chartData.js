@@ -5,7 +5,7 @@ import { usePortfolioHistory } from "./portfolio"
 import { useTokenHistory } from "./token"
 
 const convertDataToChartDataFormat = (data) => {
-    return [{id : 'chartDataId', data : data.values.map(entry => ({x: new Date(entry.timestamp), y: Number(entry.value)}))}]
+    return [{id : 'chartDataId', color: "hsl(3,100%,46%)", data : data.data.map(entry => ({x: new Date(entry.timestamp), y: Number(entry.value)}))}]
 }
 
 const chartConfigOptions = {
