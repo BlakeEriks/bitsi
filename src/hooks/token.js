@@ -5,8 +5,8 @@ const API_BASE_URL = process.env.REACT_APP_API_URL
 
 const useTokens = () => {
     const http = useHttp()
-    const{data, isSuccess} = useQuery('tokens/prices', async () => {
-        return await http.get(`${API_BASE_URL}/tokens/prices`)
+    const{data, isSuccess} = useQuery('tokens', async () => {
+        return await http.get(`${API_BASE_URL}/tokens`)
     })
 
     return {tokens: data, isSuccess}
@@ -14,8 +14,8 @@ const useTokens = () => {
 
 const useToken = symbol => {
     const http = useHttp()
-    const {isSuccess, data} = useQuery(`tokens/prices/${symbol}`, async () => {
-        return await http.get(`${API_BASE_URL}/tokens/prices/${symbol}`)
+    const {isSuccess, data} = useQuery(`tokens/${symbol}`, async () => {
+        return await http.get(`${API_BASE_URL}/tokens/${symbol}`)
     }, {enabled: !!symbol})
 
     return {token: data, isSuccess}
