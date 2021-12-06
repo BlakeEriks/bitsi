@@ -9,8 +9,9 @@ const calculateAssetsValue = (assets, tokens) => {
     let value = 0
     for (const asset of assets) {
         const token = tokens.find( token => token.symbol === asset.symbol)
-        if (!token) value = 0
-        else value += token.price * asset.quantity
+        if (token) {
+            value += token.price * asset.quantity
+        }
     }
     return value
 }
