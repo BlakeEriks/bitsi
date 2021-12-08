@@ -4,6 +4,7 @@ import Assets from "./Assets"
 import Balance from "./Balance"
 import BiggestMovers from "./BiggestMovers"
 import Chart from "./Chart"
+import CoinIndex from "./CoinIndex"
 import Leaderboard from "./Leaderboard"
 import Login from "./Login"
 import Signup from "./Signup"
@@ -15,7 +16,7 @@ const Dashboard = () => {
 
     return ( 
         <DashboardContainer>
-            <VerticalFlexBox>
+            <VerticalFlexBox alignItems='center'>
                 <Balance />
                 <BiggestMovers />
                 <Trade />
@@ -25,6 +26,7 @@ const Dashboard = () => {
                     {viewState === 'dashboard' && <Chart />}
                     {viewState === 'login' && <Login />}
                     {viewState === 'signup' && <Signup />}
+                    {viewState === 'coins' && <CoinIndex />}
                 </Card>
                 <Assets />
             </VerticalFlexBox>
