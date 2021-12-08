@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import { useToken, useTokens } from "../hooks/token"
 import useTrade from "../hooks/trade"
-import { Card, HorizontalFlexBox } from "../styles/Boxes"
+import { Card, HorizontalFlexBox, Padding } from "../styles/Boxes"
 import { TradeButton } from "../styles/Button"
 import { SubHeader, TradeInput, TradeSelect } from "../styles/SidePanel"
 import { InfoText } from "../styles/Text"
@@ -38,43 +38,45 @@ const Trade = () => {
 
   return (
     <Card>
-        <SubHeader>Make A Trade</SubHeader>
-        <HorizontalFlexBox justifyContent="space-around" width="80%">
-            <TradeButton
-                selected={method === "BUY"}
-                onClick={() => setMethod("BUY")}
-            >
-            BUY
-            </TradeButton>
-            <TradeButton
-                selected={method === "SELL"}
-                onClick={() => setMethod("SELL")}
-            >
-            SELL
-            </TradeButton>
-        </HorizontalFlexBox>
-        <form onSubmit={handleSubmit}>
-            <InfoText>Token</InfoText>
-            <TradeSelect name="symbol" value={form.symbol} onChange={handleChange}>
-                {tokens?.map((token, index) => (
-                    <option key={index} value={token.symbol}>
-                        {token.symbol} {toDollarFormat(token.price)}
-                    </option>
-                ))}
-            </TradeSelect>
-            <InfoText>Quantity</InfoText>
-            <TradeInput
-                type="number"
-                name="quantity"
-                value={form.quantity}
-                onChange={handleChange}
-            ></TradeInput>
-            <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
-            <TradeButton selected type="submit" disabled={!auth}>
-            Submit
-            </TradeButton>
-            <div>{errorText}</div>
-        </form>
+        <Padding>
+            <SubHeader>Make A Trade</SubHeader>
+            <HorizontalFlexBox justifyContent="space-around" width="80%">
+                <TradeButton
+                    selected={method === "BUY"}
+                    onClick={() => setMethod("BUY")}
+                >
+                BUY
+                </TradeButton>
+                <TradeButton
+                    selected={method === "SELL"}
+                    onClick={() => setMethod("SELL")}
+                >
+                SELL
+                </TradeButton>
+            </HorizontalFlexBox>
+            <form onSubmit={handleSubmit}>
+                <InfoText>Token</InfoText>
+                <TradeSelect name="symbol" value={form.symbol} onChange={handleChange}>
+                    {tokens?.map((token, index) => (
+                        <option key={index} value={token.symbol}>
+                            {token.symbol} {toDollarFormat(token.price)}
+                        </option>
+                    ))}
+                </TradeSelect>
+                <InfoText>Quantity</InfoText>
+                <TradeInput
+                    type="number"
+                    name="quantity"
+                    value={form.quantity}
+                    onChange={handleChange}
+                ></TradeInput>
+                <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
+                <TradeButton selected type="submit" disabled={!auth}>
+                Submit
+                </TradeButton>
+                <div>{errorText}</div>
+            </form>
+        </Padding>
     </Card>
   )
 }
