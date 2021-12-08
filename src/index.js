@@ -9,7 +9,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       keepPreviousData: true,
-      staleTime: Infinity,
+      staleTime: 1000 * 60,
     }
   },
 })
