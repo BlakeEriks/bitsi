@@ -26,7 +26,7 @@ const useTokenHistory = (symbol, period) => {
     return useQuery(`tokens/history/${symbol}/${period}`, async () => {
         return await http.get(`${API_BASE_URL}/tokens/history/${symbol}/${period}`)
     }, 
-    {enabled: !!symbol && !!period, keepPreviousData: true})
+    {enabled: !!symbol && !!period})
 }
 
 export { useToken, useTokens, useTokenHistory };

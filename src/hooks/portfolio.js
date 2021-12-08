@@ -22,28 +22,34 @@ const usePortfolio = username => {
 
     const {isSuccess, data} = useQuery(`portfolio/${username}`, async () => {
         return await http.get(`${API_BASE_URL}/portfolio/${username}`)
-    }, {enabled: !!username, keepPreviousData: true})
+    }, {enabled: !!username})
 
     return {
-        balance: data?.balance, 
-        assets: data?.assets, 
-        value: (data?.balance + calculateAssetsValue(data?.assets, tokens)).toFixed(2), 
+        balance: username ? data?.balance : 0, 
+        assets: username ? data?.assets : [], 
+        value: username ? (data?.balance + calculateAssetsValue(data?.assets, tokens)).toFixed(2) : 0, 
         isSuccess
     }
 }
 
 const usePortfolioHistory = (username, period) => {
     const http = useHttp()
-    return useQuery(`portfolio/history/${username}/${period}`, async () => {
+    const {isSuccess, isFetching, data} = useQuery(`portfolio/history/${username}/${period}`, async () => {
         return await http.get(`${API_BASE_URL}/portfolio/history/${username}/${period}`)
-    }, {enabled: !!username && !!period, keepPreviousData: true})
+    }, {enabled: !!username, keepPreviousData: true})
+
+    return {
+        isSuccess: username ? isSuccess : false,
+        isFetching,
+        data: username ? data : undefined
+    }
 }
 
 const usePortfolios = () => {
     const http = useHttp()
     const {tokens} = useTokens()
 
-    const {isSuccess, data} = useQuery(`/portfolio`, async () => {
+    const {data} = useQuery(`/portfolio`, async () => {
         return await http.get(`${API_BASE_URL}/portfolio`)
     }, {keepPreviousData: true})
 

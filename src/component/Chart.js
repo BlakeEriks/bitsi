@@ -24,7 +24,7 @@ const Chart = () => {
     const [chartState, setChartState] = useChartState()
     const {token} = useToken(chartState.token)
     const {value} = usePortfolio(chartState.username)
-    const [selectedPeriod, setSelectedPeriod] = useState('year')
+    const [selectedPeriod, setSelectedPeriod] = useState('day')
 
     useEffect( () => {
         setChartState({mode: 'portfolio', username: auth?.username})

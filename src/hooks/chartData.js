@@ -5,7 +5,7 @@ import { usePortfolioHistory } from "./portfolio"
 import { useTokenHistory } from "./token"
 
 const convertDataToChartDataFormat = (data) => {
-    return [{id : 'chartDataId', color: "hsl(3,100%,46%)", data : data.data.map(entry => ({x: new Date(entry.timestamp), y: Number(entry.value)}))}]
+    return [{id : 'chartDataId', data : data.data.map(entry => ({x: new Date(entry.timestamp), y: Number(entry.value)}))}]
 }
 
 const chartConfigOptions = {
@@ -24,15 +24,18 @@ const useChartData = (period) => {
     const tokenHistory = useTokenHistory(token, period)
     const portfolioHistory = usePortfolioHistory(username, period)
     const [chart, setChart] = useState({data: null, config: null})
-    const {isSuccess, data} = mode === 'token' ? tokenHistory : portfolioHistory
+    const {isSuccess, isFetching, data} = mode === 'token' ? tokenHistory : portfolioHistory
 
     useEffect( () => {
         if (isSuccess) {
             setChart({data: convertDataToChartDataFormat(data), config: chartConfigOptions[period]})
         }
+        else {
+            setChart({data: null, config: null})
+        }
     }, [data])
 
-    return {isSuccess, chartData: chart.data, chartConfig: chart.config}
+    return {isFetching, chartData: chart.data, chartConfig: chart.config}
 }
 
 export default useChartData
