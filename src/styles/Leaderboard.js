@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { colors } from './Colors'
 
 export const Entry = styled.div`
     display: flex;
@@ -10,6 +11,6 @@ export const Entry = styled.div`
     cursor: pointer;
 
     &:hover {
-        background: rgba(255,255,255,0.2);
+        background: ${colors.light};
     }
 `

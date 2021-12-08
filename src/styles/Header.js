@@ -7,11 +7,12 @@ export const HeaderContainer = styled.div`
     align-items: center;
     width: 100%;
     background: white;
+    border-bottom: 2px solid ${colors.light};
 `
 
 export const HeaderTitle = styled.div`
     font-size: 3em;
-    color: ${colors.dark};
+    color: ${colors.accent};
     margin: 1rem;
     cursor: pointer;
 `
@@ -31,7 +32,7 @@ export const HeaderLink = styled.div`
     transition: all 0.1s;
 
     &:hover {
-        color: ${colors.light}
+        color: ${colors.accent}
     }
 `
 

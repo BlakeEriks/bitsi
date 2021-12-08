@@ -9,6 +9,24 @@ const Button = styled.button`
 
 export const IconButton = styled(Button)`
     background: white;
+    border-radius: 25px;
+    padding: 10px;
+    
+    &, & * {
+        transition: 0.2s all;
+    }
+
+    & * {
+        color: ${props => props.selected ? colors.accent : colors.gray};
+    }
+
+    &:hover {
+        background: ${colors.light};
+
+        & * {
+            color: ${colors.accent};
+        }
+    }
 `
 
 export const LoginButton = styled(Button)`

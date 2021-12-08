@@ -5,7 +5,7 @@ export const ChartTitle = styled.div`
     text-align: left;
     font-size: 3em;
     margin: 10px 30px 0px 30px;
-    color: ${colors.dark}
+    color: ${colors.gray}
 `
 
 export const ChartContainer = styled.div`
@@ -23,7 +23,7 @@ export const ChartHeader = styled.div`
 
 export const ChartBackground = styled.div`
     margin: 0 auto;
-    height: 21.2em;
+    height: 21.7em;
     width: 95.5%;
     background: ${colors.light};
     border-radius: 10px;
@@ -37,7 +37,7 @@ export const ChartCurrentValue = styled.div`
     color: ${colors.dark};
     position: relative;
     z-index: 1;
-    font-size: 2.5em;
+    font-size: 3em;
 `
 
 export const ChartPeriodSelector = styled.div`

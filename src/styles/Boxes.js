@@ -65,9 +65,14 @@ export const ZeroHeightDiv = styled.div`
     height: 0;
 `
 
+export const Padding = styled.div`
+    padding: 10px;
+`
+
 export const FooterContainer = styled.div`
     height: 88px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-top: 2px solid ${colors.light};
 `
