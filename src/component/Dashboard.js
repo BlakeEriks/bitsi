@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+import { useChartState } from "../hooks/chartState"
 import { useViewState } from "../hooks/view"
 import { Card, DashboardContainer, VerticalFlexBox } from "../styles/Boxes"
 import Assets from "./Assets"
@@ -6,13 +8,16 @@ import BiggestMovers from "./BiggestMovers"
 import Chart from "./Chart"
 import CoinIndex from "./CoinIndex"
 import Leaderboard from "./Leaderboard"
-import Login from "./Login"
-import Signup from "./Signup"
 import Trade from "./Trade"
 
 const Dashboard = () => {
 
     const [viewState, setViewState] = useViewState()
+    const [chartState] = useChartState()
+
+    useEffect( () => {
+        setViewState('dashboard')
+    }, [chartState])
 
     return ( 
         <DashboardContainer>
@@ -21,11 +26,9 @@ const Dashboard = () => {
                 <BiggestMovers />
                 <Trade />
             </VerticalFlexBox>
-            <VerticalFlexBox>
+            <VerticalFlexBox alignItems='center'>
                 <Card>
                     {viewState === 'dashboard' && <Chart />}
-                    {viewState === 'login' && <Login />}
-                    {viewState === 'signup' && <Signup />}
                     {viewState === 'coins' && <CoinIndex />}
                 </Card>
                 <Assets />
