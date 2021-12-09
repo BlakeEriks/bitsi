@@ -5,7 +5,7 @@ const Footer = () => {
     return (
         <FooterContainer>
             <InfoText>
-                created by Team JAB
+                created by Blake Eriks
             </InfoText>
         </FooterContainer>
     )

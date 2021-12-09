@@ -32,23 +32,24 @@ export const IconButton = styled(Button)`
 export const LoginButton = styled(Button)`
     border: none;
     outline: none;
-    padding: 0.8em;
-    border-radius: 18px;
-    background: #7c7c7c2b;
-    color: white;
+    padding: 0.7em 0.8em;
+    border-radius: 10px;
+    border: 1px solid ${colors.dark};
+    background: ${colors.light};
+    color: ${colors.dark};
 `
 
 export const TradeButton = styled(Button)`
-    border: 2px solid ${colors.light};
     outline: none;
     padding: 0.5em;
     border-radius: 10px;
-    color: ${props => props.selected ? colors.dark : colors.light };
-    background: ${props => props.selected ? colors.light : 'none' };
+    color: ${props => props.selected ? colors.accent : colors.gray };
+    background: ${colors.light};
     transition: all 0.2s;
     margin: 10px 0;
+    font-size: 1em;
 
     &:hover {
-        background: ${props => props.selected ? colors.light : 'rgba(255,255,255,0.5)'};
+        color: ${colors.accent};
     }
 `

@@ -60,10 +60,11 @@ export const ChartPeriodButton = styled.div`
 `
 
 export const ToolTipContainer = styled.div`
-    background: ${colors.dark}; 
-    color: ${colors.light}; 
+    background: white;
+    color: ${colors.dark}; 
     padding: 10px; 
     border-radius: 10px;
+    border: 1px solid ${colors.gray};
 `
 
 export const ToolTipMainText = styled.div``

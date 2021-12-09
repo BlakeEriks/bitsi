@@ -38,5 +38,4 @@ export const HeaderLink = styled.div`
 
 export const HeaderLinkDivider = styled.div`
     border: 1px solid ${colors.gray};
-    
 `

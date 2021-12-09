@@ -40,7 +40,7 @@ const Trade = () => {
     <Card>
         <Padding>
             <SubHeader>Make A Trade</SubHeader>
-            <HorizontalFlexBox justifyContent="space-around" width="80%">
+            <HorizontalFlexBox justifyContent="space-evenly" width="100%">
                 <TradeButton
                     selected={method === "BUY"}
                     onClick={() => setMethod("BUY")}
@@ -74,7 +74,7 @@ const Trade = () => {
                 <TradeButton selected type="submit" disabled={!auth}>
                 Submit
                 </TradeButton>
-                <div>{errorText}</div>
+                <InfoText>{errorText}</InfoText>
             </form>
         </Padding>
     </Card>

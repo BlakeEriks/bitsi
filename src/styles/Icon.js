@@ -22,3 +22,7 @@ export const DoorClosedIcon = styled(faSolid.DoorOpen)`
 export const FriendsIcon = styled(faSolid.UserFriends)`
     ${IconStyles}
 `
+
+export const TimesIcon = styled(faSolid.Times)`
+    height: 15px;
+`
