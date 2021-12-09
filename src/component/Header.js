@@ -1,13 +1,14 @@
+import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import { useChartState } from "../hooks/chartState"
 import useUserActions from "../hooks/user"
-import { useViewState } from "../hooks/view"
 import { HeaderContainer, HeaderContent, HeaderLink, HeaderLinkDivider, HeaderTitle } from "../styles/Header"
+import Login from "./Login"
 
 const Header = () => {
 
     const [auth] = useAuthState()
-    const [view, setViewState] = useViewState()
+    const [viewState, setViewState] = useState('default')
     const [chartState, setChartState] = useChartState()
     const {logout} = useUserActions()
 
@@ -24,6 +25,11 @@ const Header = () => {
                     <HeaderLink onClick={() => logout()}>Logout</HeaderLink>
                 </>
                 : 
+                viewState === 'login' || viewState === 'signup' ?
+                <>
+                    <Login viewState={viewState} setViewState={setViewState}/>
+                </>
+                :
                 <>
                     <HeaderLink onClick={() => setViewState('login')}>Log In</HeaderLink>
                     <HeaderLinkDivider />
