@@ -49,7 +49,7 @@ const usePortfolios = () => {
     const http = useHttp()
     const {tokens} = useTokens()
 
-    const {data} = useQuery(`/portfolio`, async () => {
+    const {data} = useQuery(`portfolio`, async () => {
         return await http.get(`${API_BASE_URL}/portfolio`)
     }, {keepPreviousData: true})
 
