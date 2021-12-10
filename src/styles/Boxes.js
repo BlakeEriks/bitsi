@@ -70,7 +70,7 @@ export const Padding = styled.div`
 `
 
 export const FooterContainer = styled.div`
-    height: 88px;
+    height: 69px;
     display: flex;
     align-items: center;
     justify-content: center;

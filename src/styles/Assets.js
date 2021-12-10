@@ -17,7 +17,7 @@ export const AssetContainer = styled.div`
     background: ${colors.light};
     border: 1px solid ${colors.gray};
     border-radius: 10px;
-    margin: 4px 0;
+    margin: 4px 2px;
     font-size: 1vw;
     cursor: pointer;
     transition: all 0.3s;

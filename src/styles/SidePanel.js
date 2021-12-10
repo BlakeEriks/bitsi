@@ -23,7 +23,7 @@ export const Mover = styled.div`
 `
 
 export const PercentChange = styled.span`
-    color: ${props => props.positive ? 'rgba(20,120,20,0.8)' : 'red'};
+    color: ${props => props.positive ? 'rgba(20,120,20,0.8)' : 'rgba(160,20,20,0.8)'};
     font-size: 1.3ch;
 `
 
