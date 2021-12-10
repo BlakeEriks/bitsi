@@ -9,12 +9,11 @@ const Login = ({viewState, setViewState}) => {
     
     const userActions = useUserActions()
     const [form, setForm] = useState({username: '', password: ''})
-    const [badLogin, setBadLogin] = useState(false)
 
     const handleSubmit = async event => {
         event.preventDefault()
         try {
-            if (viewState == 'login') {
+            if (viewState === 'login') {
                 await userActions.login({...form})
             }
             else {
@@ -23,7 +22,7 @@ const Login = ({viewState, setViewState}) => {
             setViewState('default')
         }
         catch (err) {
-            setBadLogin(true)
+            alert('Invalid login or username taken')
         }
     }
 
@@ -36,7 +35,7 @@ const Login = ({viewState, setViewState}) => {
             <HorizontalFlexBox>
                 <LoginInput autoFocus type="text" name="username" value={form.username} onChange={onChange} placeholder="username" required />
                 <LoginInput type="password" name="password" value={form.password} onChange={onChange} placeholder="password" required />
-                <LoginButton type="submit">{viewState == 'login' ? 'Login' : 'Sign Up'}</LoginButton>
+                <LoginButton type="submit">{viewState === 'login' ? 'Login' : 'Sign Up'}</LoginButton>
                 <IconButton onClick={() => setViewState('default')}>
                     <TimesIcon />
                 </IconButton>

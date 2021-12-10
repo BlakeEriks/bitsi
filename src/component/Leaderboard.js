@@ -21,7 +21,7 @@ const Leaderboard = () => {
             <VerticalFlexBox>
                 {leaderboard?.map( (user, index) => 
                     <Entry key={index} onClick={() => setChartState({mode: 'portfolio', username: user.username})} highlight={user.username === auth?.username}>
-                        <NameText>{index+1 + '.' + ' ' + user.username}</NameText>
+                        <NameText>{index+1 + '. ' + user.username}</NameText>
                         <InfoText>{shortenDollar(user.value)}</InfoText>
                     </Entry>
                 )}
