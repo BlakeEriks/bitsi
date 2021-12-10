@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
+import { usePortfolio } from "../hooks/portfolio"
 import { useToken, useTokens } from "../hooks/token"
 import useTrade from "../hooks/trade"
 import { Card, HorizontalFlexBox, Padding } from "../styles/Boxes"
@@ -14,6 +15,7 @@ const Trade = () => {
     const [method, setMethod] = useState("BUY")
     const [form, setForm] = useState({ symbol: "BTC", quantity: "" })
     const [errorText, setErrorText] = useState("")
+    const { balance, assets } = usePortfolio(auth.username)
     const { token } = useToken(form.symbol)
     const { tokens } = useTokens()
     const makeTrade = useTrade()
@@ -36,11 +38,35 @@ const Trade = () => {
         setErrorText(res.success ? "" : res.error)
     }
 
+    const tradeAll = () => {
+        if (method === 'BUY') {
+            setForm({...form, quantity: (balance / token.price).toFixed(10)})
+        }
+        if (method === 'SELL') {
+            const ownedAsset = assets.find(asset => asset.symbol === token.symbol)
+            if (ownedAsset) {
+                setForm({...form, quantity: ownedAsset.quantity})
+            }
+        }
+    }
+
+    const getTradeOptions = () => {
+        let tokenOptions = tokens
+        if (method === 'SELL') {
+            tokenOptions = tokens.filter(token => assets.some(asset => asset.symbol === token.symbol))
+        }
+        return tokenOptions?.map((token, index) => (
+            <option key={index} value={token.symbol}>
+                {token.symbol} {toDollarFormat(token.price)}
+            </option>
+        ))
+    }
+
   return (
     <Card>
         <Padding>
             <SubHeader>Make A Trade</SubHeader>
-            <HorizontalFlexBox justifyContent="space-evenly" width="100%">
+            <HorizontalFlexBox justifyContent="space-around" width="100%">
                 <TradeButton
                     selected={method === "BUY"}
                     onClick={() => setMethod("BUY")}
@@ -57,19 +83,18 @@ const Trade = () => {
             <form onSubmit={handleSubmit}>
                 <InfoText>Token</InfoText>
                 <TradeSelect name="symbol" value={form.symbol} onChange={handleChange}>
-                    {tokens?.map((token, index) => (
-                        <option key={index} value={token.symbol}>
-                            {token.symbol} {toDollarFormat(token.price)}
-                        </option>
-                    ))}
+                    {getTradeOptions()}
                 </TradeSelect>
                 <InfoText>Quantity</InfoText>
-                <TradeInput
-                    type="number"
-                    name="quantity"
-                    value={form.quantity}
-                    onChange={handleChange}
-                ></TradeInput>
+                <HorizontalFlexBox alignItems='center'>
+                    <TradeInput
+                        type="number"
+                        name="quantity"
+                        value={form.quantity}
+                        onChange={handleChange}
+                    />
+                    <TradeButton onClick={() => tradeAll()} type="button">All</TradeButton>
+                </HorizontalFlexBox>
                 <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
                 <TradeButton selected type="submit" disabled={!auth}>
                 Submit
