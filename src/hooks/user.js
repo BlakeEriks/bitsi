@@ -17,7 +17,7 @@ const useUserActions = () => {
             .then( data => {
                 localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
-                setViewState('dashboard')
+                setViewState('chart')
             })
     }
 
@@ -26,7 +26,7 @@ const useUserActions = () => {
             .then( data => {
                 localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
-                setViewState('dashboard')
+                setViewState('chart')
                 queryClient.invalidateQueries('portfolio')
             })
     }
