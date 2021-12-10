@@ -30,7 +30,7 @@ const useTrade = () => {
 
         /* If token amount is 0, remove from assets */
         if (existingAsset.quantity === 0) {
-            newAssets = newAssets.filter(asset => asset.symbol != symbol)
+            newAssets = newAssets.filter(asset => asset.symbol !== symbol)
         }
         tradeMutation.mutate({assets: newAssets, balance: newBalance})
         return {success: true}
