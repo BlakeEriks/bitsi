@@ -1,12 +1,14 @@
+import { useQueryClient } from "react-query";
 import { useAuthState } from "./auth";
-import { useViewState } from "./view"
 import useHttp from "./http";
+import { useViewState } from "./view";
 
 const useUserActions = () => {
     
     const http = useHttp()
     const [auth, setAuth] = useAuthState()
     const [viewState, setViewState] = useViewState()
+    const queryClient = useQueryClient()
 
     const API_BASE_URL = process.env.REACT_APP_API_URL
     
@@ -25,6 +27,7 @@ const useUserActions = () => {
                 localStorage.setItem('auth', JSON.stringify(data));
                 setAuth(data)
                 setViewState('dashboard')
+                queryClient.invalidateQueries('portfolio')
             })
     }
 
