@@ -96,7 +96,7 @@ const Trade = () => {
                     <TradeButton onClick={() => tradeAll()} type="button">All</TradeButton>
                 </HorizontalFlexBox>
                 <InfoText>Total: {toDollarFormat(token?.price * form.quantity)}</InfoText>
-                <TradeButton selected type="submit" disabled={!auth}>
+                <TradeButton type="submit" disabled={!auth}>
                 Submit
                 </TradeButton>
                 <InfoText>{errorText}</InfoText>
