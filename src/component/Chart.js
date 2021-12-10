@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useAuthState } from "../hooks/auth"
 import { useChartState } from "../hooks/chartState"
 import { usePortfolio } from "../hooks/portfolio"
@@ -19,19 +19,15 @@ const Chart = () => {
         {display:'1W', name: 'week'},
         {display:'1D', name: 'day'}, 
     ]
-                                       
+                      
     const [auth] = useAuthState()
     const [chartState, setChartState] = useChartState()
     const {token} = useToken(chartState.token)
     const {value} = usePortfolio(chartState.username)
     const [selectedPeriod, setSelectedPeriod] = useState('day')
-
-    useEffect( () => {
-        setChartState({mode: 'portfolio', username: auth?.username})
-    }, [auth])
     
     const getDisplayValue = () => {
-        return toDollarFormat(chartState.mode === 'portfolio' ? (isNaN(value) ? 0 : value) : token?.price)
+        return toDollarFormat(chartState.mode === 'portfolio' ? (isNaN(value) ? 0 : value) : isNaN(token?.price) ? '' : token?.price)
     }
 
     const getChartTitle = () => {

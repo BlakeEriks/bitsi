@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import { useAuthState } from "../hooks/auth"
 import { useChartState } from "../hooks/chartState"
 import { useViewState } from "../hooks/view"
 import { Card, DashboardContainer, VerticalFlexBox } from "../styles/Boxes"
@@ -13,11 +14,16 @@ import Trade from "./Trade"
 const Dashboard = () => {
 
     const [viewState, setViewState] = useViewState()
-    const [chartState] = useChartState()
+    const [chartState, setChartState] = useChartState()
+    const [auth] = useAuthState()
 
     useEffect( () => {
-        setViewState('dashboard')
+        setViewState('chart')
     }, [chartState])
+
+    useEffect( () => {
+        setChartState({mode: 'portfolio', username: auth?.username})
+    }, [auth])
 
     return ( 
         <DashboardContainer>
@@ -28,7 +34,7 @@ const Dashboard = () => {
             </VerticalFlexBox>
             <VerticalFlexBox alignItems='center'>
                 <Card>
-                    {viewState === 'dashboard' && <Chart />}
+                    {viewState === 'chart' && <Chart />}
                     {viewState === 'coins' && <CoinIndex />}
                 </Card>
                 <Assets />
