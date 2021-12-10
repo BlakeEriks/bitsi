@@ -10,6 +10,7 @@ const queryClient = new QueryClient({
     queries: {
       keepPreviousData: true,
       staleTime: 1000 * 60,
+      refetchOnWindowFocus: false,
     }
   },
 })
