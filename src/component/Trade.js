@@ -15,7 +15,7 @@ const Trade = () => {
     const [method, setMethod] = useState("BUY")
     const [form, setForm] = useState({ symbol: "BTC", quantity: "" })
     const [errorText, setErrorText] = useState("")
-    const { balance, assets } = usePortfolio(auth.username)
+    const { balance, assets } = usePortfolio(auth?.username)
     const { token } = useToken(form.symbol)
     const { tokens } = useTokens()
     const makeTrade = useTrade()
