@@ -19,6 +19,13 @@ export const AssetContainer = styled.div`
     border-radius: 10px;
     margin: 4px 0;
     font-size: 1vw;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+        border: 1px solid ${colors.accent};
+        box-shadow: 0px 0px 3px ${colors.accent};
+    }
 
     & .quantity {
         border-right: 2px solid ${colors.gray};
