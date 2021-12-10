@@ -10,6 +10,10 @@ export const Entry = styled.div`
     padding: 10px 0;
     cursor: pointer;
 
+    & * {
+        color: ${props => props.highlight && colors.accent + ' !important'};
+    }
+
     &:hover {
         background: ${colors.light};
     }
