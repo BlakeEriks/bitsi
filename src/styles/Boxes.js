@@ -66,7 +66,7 @@ export const ZeroHeightDiv = styled.div`
 `
 
 export const Padding = styled.div`
-    padding: 10px;
+    padding: ${props => props.large ? '15px' : '10px'};
 `
 
 export const FooterContainer = styled.div`

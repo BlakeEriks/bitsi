@@ -9,4 +9,6 @@ const toDollarFormat = num => dollarFormatter.format(num)
 
 const shortenDollar = num => numeral(num).format('0.0a')
 
-export { toDollarFormat, shortenDollar };
+const shortenQuantity = num => numeral(num).format('0a')
+
+export { toDollarFormat, shortenDollar, shortenQuantity };

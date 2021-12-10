@@ -14,13 +14,16 @@ export const AssetContainer = styled.div`
     padding: 0.2em 0.5em;
     justify-content: space-between;
     color: ${colors.gray};
-    max-width: 33%;
-    font-size: 1.2em;
+    background: ${colors.light};
+    border: 1px solid ${colors.gray};
+    border-radius: 10px;
+    margin: 4px 0;
+    font-size: 1vw;
 
     & .quantity {
-        width: 100%;
         border-right: 2px solid ${colors.gray};
         padding: 0 5px;
+        color: ${colors.dark};
     }
 
     & .value {

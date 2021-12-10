@@ -47,7 +47,11 @@ export const TradeInput = styled.input`
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 1em;
   margin: 5px 0 10px 0;
-  width: 90%;
+  width: 8em;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 `;
 
 export const SubHeader  = styled.div`
