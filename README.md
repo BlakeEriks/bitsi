@@ -1,12 +1,13 @@
-<p align="center" style="font-size:72px;color:#A64253;margin:0;">Bitsi 🕷</p> 
-<p align="center" style="">
-  Create by Blake Eriks 
-  <a href="http://twitter.com/be_lockay">
-    <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" style="height:30px;"> </img>
-  </a>
-</p>
+<h1>
+  <p align="center" style="font-size:72px;color:#A64253;margin:0;">Bitsi 🕷</p> 
+  <p align="center" style="">
+    Created by Blake Eriks 
+    <a href="http://twitter.com/be_lockay">
+      <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" style="height:30px;"> </img>
+    </a>
+  </p>
+</h1>
 
----
 
 [Bitsi🕷](https://bitsi.netlify.app/) is a simulated exchange platform allowing users to invest an imaginary million dollars 💸 into a variety of crypto assets.
 
