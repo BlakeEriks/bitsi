@@ -1,43 +1,68 @@
-# JAB App
+<p align="center" style="font-size:72px;color:#A64253;margin:0;">Bitsi 🕷</p> 
+<p align="center" style="">
+  Create by Blake Eriks 
+  <a href="http://twitter.com/be_lockay">
+    <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" style="height:30px;"> </img>
+  </a>
+</p>
 
-JAB is an application built for users to invest in a simulated crpyto exchange and also track how well their assets are doing. Users start with $1,000,000 to invest and compete with other users. Users can register, sign up, and log in to where they can view a leaderboard of all the other portfolios. This application pulls data from two APIs while featuring full CRUD (create, read, update, and delete) functionality. 
+---
 
-## Technologies Used
+[Bitsi🕷](https://bitsi.netlify.app/) is a simulated exchange platform allowing users to invest an imaginary million dollars 💸 into a variety of crypto assets.
+
+![bitsi app](public/img/2022-01-13-16-08-43.png)
+
+Make an account to get started, and see how your portfolio stacks up against others in the Bitsi community! 👯‍♂️
+
+## 📡 Technologies
 
 * React
 * Javascript
 * Express
 * Mongoose
-* Mongodb
-* HTML
+* MongoDB
 * CSS
 * Heroku Deployment
 * Netlify Deployment
 
-## Installation and Setup Instructions
+## 🛠️ Installation Steps
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Clone the repository
 
-## Resources 
+```bash
+git clone https://github.com/BlakeEriks/bitsi.git
+```
 
-* Coin API
-* Messari API
+2. Change the working directory
 
-## Reflection
+```bash
+cd bitsi
+```
 
-This project was built by three members, aka Team JAB, for our Unit 3 React Project. Our project goals included using technologies learned up to this point and practicing our dev skills along with working in a collaborative environment. In addition, we added User Authentication where we can register, create, and sign-up.  
+3. Install dependencies
 
-### This application is built upon:
+```bash
+npm install
+```
 
-* Three object models: User, Portfolio, and Tokens
-* A full CRUD express API for user portfolios and tokens
-* A single-page built with React, giving users the ability to create their own cryptocurrency stock portfolio and manage a base $100,000 within our simulated exchange
-* Users also given the ability to view other users’ portfolios as well as specific currencies
+4. Create `.env` file in root and add your variables
 
-Our main and biggest challenge was managing our API’s, specifically Binance. In an attempt to remedy this, we decided to use the API from Messari as well as it allows for us to make more pulls to constantly update the token data for users. 
+```bash
+REACT_APP_API_URL= YOUR_API_URL
+```
 
-## Stretch Goals
+5. Run the app
 
-* Create a more versatile exchange with more coin options = more API calls which make it more difficult
-* User can click a single `liquidate` button to liquidate all assets back into USD
+```bash
+npm run start
+```
+
+## 🔥 External APIs
+
+* [Coin API](https://www.coinapi.io/)
+* [Messari API](https://messari.io/api)
+
+## 📝 Planned Features
+
+* Increase total available tokens to trade
+* Add insight into other user's portfolio

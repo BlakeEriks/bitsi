@@ -14,7 +14,7 @@ const Leaderboard = () => {
     const [auth] = useAuthState()
 
     return (
-        <Card width='10em'>
+        <Card width='11em'>
             <SubHeader>
                 Leaderboard
             </SubHeader>

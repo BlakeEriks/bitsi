@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <HeaderContainer>
             <HeaderTitle onClick={() => setChartState({mode: 'portfolio', username: auth?.username})}>
-                Bitsi
+                Bitsi🕷
             </HeaderTitle>
             <HeaderContent>
                 {auth ?
