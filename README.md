@@ -1,7 +1,6 @@
-<p style="text-align:center;">
+<div align="center">
   <img src="public/img/bitsi-logo.png" alt="logo" width="500">
-</p>
-
+</div>
 <h1>
   <p align="center">
     Created by Blake Eriks 
