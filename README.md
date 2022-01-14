@@ -1,7 +1,9 @@
-![bitsi logo](public/img/bitsi-logo.png)
+<p style="text-align:center;">
+  <img src="public/img/bitsi-logo.png" alt="logo" width="500">
+</p>
 
 <h1>
-  <p align="center" style="">
+  <p align="center">
     Created by Blake Eriks 
     <a href="http://twitter.com/be_lockay">
       <img src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c53e.png" style="height:30px;"> </img>
